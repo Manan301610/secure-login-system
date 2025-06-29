@@ -19,15 +19,15 @@ app.secret_key = "your_secret_key"
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'mananbhalani00000@gmail.com'
-app.config['MAIL_PASSWORD'] = 'wtvr ltmi ufca puds'
-app.config['MAIL_DEFAULT_SENDER'] = 'mananbhalani00000@gmail.com'
+app.config['MAIL_USERNAME'] = 'your-mail@gmail.com'
+app.config['MAIL_PASSWORD'] = '16 digit mail password'
+app.config['MAIL_DEFAULT_SENDER'] = 'your-mail@gmail.com'
 
 mail = Mail(app)
 
 
 # MongoDB Atlas Setup
-client = MongoClient("mongodb+srv://manan1248:manan1248@secure-login.apvgkcs.mongodb.net/?retryWrites=true&w=majority&appName=secure-login")
+client = MongoClient("mongodb+srv://username:password@secure-login.apvgkcs.mongodb.net/?retryWrites=true&w=majority&appName=secure-login")
 db = client["secure_login"]
 users = db["users"]
 
@@ -36,7 +36,7 @@ users = db["users"]
 serializer = URLSafeTimedSerializer(app.secret_key)
 
 # reCAPTCHA Config
-RECAPTCHA_SECRET = "6LcYwWkrAAAAAGf13D2uJJC5Qd2SvoCeVmK-01MY"
+RECAPTCHA_SECRET = "SECRET_KEY"
 
 def verify_recaptcha(response_token):
     payload = {'secret': RECAPTCHA_SECRET, 'response': response_token}
