@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="form-page">
+  <div class="form-card">
+    <h2>Login</h2>
+    {% if lockout_remaining > 0 %}
+<div class="flash-danger">
+  Account is locked. Try again in <span id="countdown">{{ lockout_remaining }}</span> seconds.
+</div>
+<script>
+  const countdownElement = document.getElementById('countdown');
+  const formFields = document.querySelectorAll("input, button");
+  formFields.forEach(el => el.disabled = true);
+
+  let seconds = parseInt(countdownElement.innerText);
+
+  const interval = setInterval(() => {
+    seconds--;
+    countdownElement.innerText = seconds;
+    if (seconds <= 0) {
+      clearInterval(interval);
+      location.reload();  // Reload page when timer ends
+    }
+  }, 1000);
+</script>
+{% endif %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flash-messages">
+          {% for category, message in messages %}
+            <li class="flash-{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <form method="POST">
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Password" required oncopy="return false" onpaste="return false">
+      <div class="g-recaptcha" data-sitekey="6LcYwWkrAAAAAMu5kSsZy56_7OsuujQvhhV6CsYO"></div>
+      <button type="submit">Login</button>
+      <p class="form-footer">Don't have an account? <a href="/register">Sign up</a></p>
+      <p class="form-footer">
+         Forgot your password? <a href="{{ url_for('forgot_password') }}">Reset here</a>
+      </p>
+
+    </form>
+  </div>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</body>
+</html>

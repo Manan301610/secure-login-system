@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="landing">
+  <div class="landing-container">
+    <h1 class="landing-title">Welcome to Secure Login System</h1>
+    <p class="landing-subtitle">Role-based login with OTP verification</p>
+    <div class="landing-buttons">
+      <a href="/login" class="landing-btn">Login</a>
+      <a href="/register" class="landing-btn">Register</a>
+    </div>
+  </div>
+</body>
+</html>

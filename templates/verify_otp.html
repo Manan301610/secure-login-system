@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Verify OTP</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .timer {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .resend-btn {
+      background: none;
+      border: none;
+      color: #2563eb;
+      text-decoration: underline;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    .resend-btn:disabled {
+      color: gray;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body class="form-page">
+  <div class="form-card">
+    <h2>Enter OTP</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flash-messages">
+          {% for category, message in messages %}
+            <li class="flash-{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="/verify_otp">
+      <input type="text" name="otp" placeholder="Enter OTP" required>
+      <div class="timer">
+        Resend OTP in <span id="countdown">30</span> seconds.
+      </div>
+      <button class="resend-btn" id="resendBtn" onclick="location.href='/resend_otp'" disabled>Resend OTP</button>
+      <button type="submit">Verify OTP</button>
+    </form>
+  </div>
+
+  <script>
+    let seconds = 30;
+    const countdown = document.getElementById("countdown");
+    const resendBtn = document.getElementById("resendBtn");
+
+    const timer = setInterval(() => {
+      seconds--;
+      countdown.textContent = seconds;
+
+      if (seconds <= 0) {
+        clearInterval(timer);
+        resendBtn.disabled = false;
+        countdown.textContent = "0";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

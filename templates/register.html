@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="form-page">
+  <div class="form-card">
+    <h2>Create Account</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flash-messages">
+          {% for category, message in messages %}
+            <li class="flash-{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <form method="POST">
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <select name="role" required>
+        <option value="" disabled selected>Select Role</option>
+        <option value="User">User</option>
+        <option value="Admin">Admin</option>
+      </select>
+      <select name="security_question" required>
+        <option value="" disabled selected>Choose a security question</option>
+        <option value="What is your pet's name?">What is your pet's name?</option>
+        <option value="What is your favorite food?">What is your favorite food?</option>
+        <option value="What is your birthplace?">What is your birthplace?</option>
+      </select>
+
+       <input type="text" name="security_answer" placeholder="Answer to security question" required>
+
+      <div class="g-recaptcha" data-sitekey="6LcYwWkrAAAAAMu5kSsZy56_7OsuujQvhhV6CsYO"></div>
+      <button type="submit">Sign Up</button>
+      <p class="form-footer">Already have an account? <a href="/login">Login</a></p>
+    </form>
+  </div>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</body>
+</html>

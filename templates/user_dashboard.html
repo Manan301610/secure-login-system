@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="landing">
+  <div class="landing-container">
+    <h1 class="landing-title">Welcome {{ user.username }}</h1>
+    <p class="landing-subtitle">You're logged in as <strong>{{ user.role }}</strong></p>
+    <div class="landing-buttons">
+      <a href="/logout" class="landing-btn">Logout</a>
+    </div>
+  </div>
+</body>
+</html>
