@@ -52,14 +52,10 @@ A secure and modern login system built using **Flask**, **MongoDB**, and **HTML/
 
 ## ⚙️ Setup Instructions
 
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/yourusername/secure-login-system.git
-cd secure-login-system
-
 Install all Dependencies
 pip install -r requirements.txt
 
 Run the Flask App
 python app.py
+![image](https://github.com/user-attachments/assets/52b02c1c-b2df-40cf-9ea8-579d7c4f97bb)
+
