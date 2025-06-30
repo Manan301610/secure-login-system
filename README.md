@@ -68,4 +68,7 @@ python app.py
 
 ![Screenshot 2025-06-30 143118](https://github.com/user-attachments/assets/467bd609-4316-448f-a3a8-e3ad995f74e0)
 
+![Screenshot 2025-06-30 143118](https://github.com/user-attachments/assets/f998c287-bd72-4cdd-8ea2-ecb674410513)
+![Screenshot 2025-06-30 143015](https://github.com/user-attachments/assets/efbfaf1d-2e82-4a8e-a92f-66a54341aebf)
+
 
